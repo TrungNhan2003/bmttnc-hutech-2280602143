@@ -30,7 +30,7 @@ class QuanLySinhVien:
         if (sv != None): 
             name = input("Nhap ten sinh vien: ") 
             sex = input("Nhap gioi tinh sinh vien: ") 
-            major = int(input("Nhap chuyên ngành của sinh vien: ")) 
+            major = input("Nhap chuyên nganh của sinh vien: ")
             diemTB = float(input("Nhap diem của sinh vien: ")) 
             sv._name = name 
             sv._sex = sex 
@@ -47,13 +47,13 @@ class QuanLySinhVien:
         self.listSinhVien.sort(key=lambda x: x._name, reverse=False) 
         
     def sortByDiemTB(self): 
-        self.listSinhVien.sort(key=lambda x: x. diemTB, reverse=False) 
+        self.listSinhVien.sort(key=lambda x: x._diemTB, reverse=False) 
         
     def findByID(self, ID): 
         searchResult = None 
         if (self.soLuongSinhVien() > 0): 
             for sv in self.listSinhVien: 
-                if (sv. id10): 
+                if (sv._id ==ID): 
                     searchResult = sv 
         return searchResult 
     

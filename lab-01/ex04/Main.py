@@ -51,7 +51,7 @@ while (1==1):
         if (qlsv.soLuongSinhVien() > 0): 
             print("\n5. Sap xep sinh vien theo diem trung bình (GPA). ") 
             qlsv.sortByDiemTB() 
-            qlsv.showSinhVien(qlsv.getListSinhvien()) 
+            qlsv.showSinhVien(qlsv.getListSinhVien()) 
         else: 
             print("\nSanh sach sinh vien trong!") 
     elif (key == 6):
@@ -73,3 +73,4 @@ while (1==1):
     else: 
         print("\nkhong co chuc nang nay!") 
         print("\nHay chon chuc nang trong hop menu.")
+  
