@@ -1,6 +1,5 @@
 import tornado.ioloop
 import tornado.websocket
-
 class WebSocketClient:
     def __init__(self, io_loop):
         self.connection = None
