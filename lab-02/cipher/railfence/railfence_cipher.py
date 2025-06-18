@@ -1,3 +1,4 @@
+
 class RailFenceCipher:
     def __init__(self):
         pass
@@ -13,49 +14,39 @@ class RailFenceCipher:
             elif rail_index == num_rails - 1:
                 direction = -1
             rail_index += direction
-        
-        # Reconstruct the ciphertext
-        ciphertext = ""
-        for rail in rails:
-            ciphertext += "".join(rail)
-        return ciphertext
+        cipher_text = ''.join(''.join(rail) for rail in rails)
+        return cipher_text
 
     def rail_fence_decrypt(self, cipher_text, num_rails):
-        # Create a matrix to simulate the rail fence
-        matrix = [['\n'] * len(cipher_text) for _ in range(num_rails)]
-
-        # Mark the positions where characters would be placed
+        rail_lengths = [0] * num_rails
         rail_index = 0
         direction = 1
-        col = 0
+
         for _ in range(len(cipher_text)):
-            matrix[rail_index][col] = '*'
+            rail_lengths[rail_index] += 1
             if rail_index == 0:
                 direction = 1
             elif rail_index == num_rails - 1:
                 direction = -1
             rail_index += direction
-            col += 1
 
-        # Fill the matrix with the ciphertext
-        index = 0
-        for r in range(num_rails):
-            for c in range(len(cipher_text)):
-                if matrix[r][c] == '*':
-                    matrix[r][c] = cipher_text[index]
-                    index += 1
+        rails = []
+        start = 0
+        for length in rail_lengths:
+            rails.append(cipher_text[start:start + length])
+            start += length
 
-        # Read the plaintext from the matrix
         plain_text = ""
         rail_index = 0
         direction = 1
-        col = 0
+
         for _ in range(len(cipher_text)):
-            plain_text += matrix[rail_index][col]
+            plain_text += rails[rail_index][0]
+            rails[rail_index] = rails[rail_index][1:]
             if rail_index == 0:
                 direction = 1
             elif rail_index == num_rails - 1:
                 direction = -1
             rail_index += direction
-            col += 1
+
         return plain_text

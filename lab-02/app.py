@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-#router routes for caesar cypher
+#router routes for caesar cipher
 @app.route("/caesar")
 def caesar():
     return render_template('caesar.html')
@@ -19,7 +19,7 @@ def caesar_encrypt():
     key = int(request.form['inputKeyPlain'])
     Caesar = CaesarCipher()
     encrypted_text = Caesar.encrypt_text(text, key)
-    return f"text:{text}<br/>key: {key}<br/>encrypted text: {encrypted_text}"
+    return f"text: {text}<br/>key: {key}<br/>encrypted text: {encrypted_text}"
 
 @app.route("/decrypt", methods=['POST'])
 def caesar_decrypt():
@@ -27,7 +27,7 @@ def caesar_decrypt():
     key = int(request.form['inputKeyCipher'])
     Caesar = CaesarCipher()
     decrypted_text = Caesar.decrypt_text(text, key)
-    return f"text:{text}<br/>key: {key}<br/>decrypted text: {decrypted_text}"
+    return f"text: {text}<br/>key: {key}<br/>decrypted text: {decrypted_text}"
 
 #main function
 if __name__ == "__main__":
