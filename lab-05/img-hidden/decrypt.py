@@ -1,6 +1,6 @@
 import sys
 from PIL import Image
-
+#abc
 def decode_image(encoded_image_path):
     img = Image.open(encoded_image_path)
     width, height = img.size
